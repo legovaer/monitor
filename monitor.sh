@@ -215,8 +215,7 @@ done
 for addr in "${known_static_beacons[@]^^}"; do 
 
 	#WAS THERE A NAME HERE?
-	known_name=$(grep "$addr" "$BEAC_CONFIG" | tr "\\t" " " | sed 's/  */ /gi;s/#.\{0,\}//gi' | sed "s/$addr //gi;s/  */ /gi" )
-
+        known_name=$(grep -i "$addr" "$BEAC_CONFIG" | tr "\\t" " " | sed 's/  */ /gi;s/#.\{0,\}//gi' | sed "s/$addr //gi;s/  */ /gi" )
 	#================= SHOULD WE USE AN ALIAS? =====================
 
    	#IF THE VALUE DOES NOT EXIST, USE THE KEY (MAC ADDRESS INSTEAD)
@@ -281,7 +280,7 @@ connectable_present_devices () {
 				do scan_result=$(hcitool rssi "$known_addr" 2>&1); \
 				scan_result=${scan_result//[^0-9]/}; \
 				scan_result=${scan_result:-99}; \
-				[[ "$scan_result" == "0" ]] && scan_result=99; \
+				# [[ "$scan_result" == "0" ]] && scan_result=99; \
 				counter=$((counter+1)); \
 				avg_total=$((avg_total + scan_result )); \
 				sleep 0.5; \
