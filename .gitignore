@@ -1,2 +1,9 @@
 
 .DS_Store
+known_beacon_addresses
+mqtt_preferences
+.pids
+behavior_preferences
+.public_name_cache
+.manufacturer_cache
+known_static_addresses

@@ -227,6 +227,9 @@ ExecStart=/bin/bash $base_directory/$(basename $0) $FILTERED_ARGS &
 WorkingDirectory=$base_directory
 Restart=always
 RestartSec=10
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=monitor
 
 [Install]
 WantedBy=multi-user.target network.target" > "$service_path"
